@@ -1,0 +1,16 @@
+{
+  "checkpoint": "/home/rahul/IsaacLab/logs/rsl_rl/custom_lift_franka/2026-11-12_10-11-46/model_1999.pt",
+  "episodes": 2048,
+  "lift_success_pct": 0.0,
+  "goal_success_pct": 0.0,
+  "drop_pct": 1.7,
+  "never_lifted_pct": 0.9,
+  "reached_10cm_pct": 97.2,
+  "median_max_height_cm": 15.5,
+  "median_longest_hold_above_10cm_s": 0.26,
+  "goal_height_range_cm": [
+    25.0,
+    50.0
+  ],
+  "median_closest_lifted_dist_cm": 27.1
+}

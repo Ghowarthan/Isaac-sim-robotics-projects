@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<!-- UR5e driven by Isaac Sim through topic_based_ros2_control -->
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="ur5e">
+
+  <!-- 1. Include the official UR5e description (links, joints, meshes, world link).
+       ur_type and name are passed in on the command line / from the launch file. -->
+  <xacro:include filename="$(find ur_description)/urdf/ur.urdf.xacro"/>
+
+  <!-- 2. The ros2_control block: how ros2_control talks to the "hardware" (Isaac Sim) -->
+  <ros2_control name="IsaacSimSystem" type="system">
+
+    <hardware>
+      <!-- Hardware plugin: publishes commands on a topic, reads states from a topic -->
+      <plugin>topic_based_ros2_control/TopicBasedSystem</plugin>
+      <!-- Topic Isaac Sim's subscriber listens on (from Milestone 1) -->
+      <param name="joint_commands_topic">/joint_command</param>
+      <!-- Topic Isaac Sim's publisher broadcasts on -->
+      <param name="joint_states_topic">/joint_states</param>
+    </hardware>
+
+    <!-- One block per joint. command_interface = what we can send,
+         state_interface = what we read back. initial_value = home pose,
+         so the arm doesn't jump before the first real reading arrives. -->
+    <joint name="shoulder_pan_joint">
+      <command_interface name="position"/>
+      <state_interface name="position"><param name="initial_value">0.0</param></state_interface>
+      <state_interface name="velocity"/>
+    </joint>
+    <joint name="shoulder_lift_joint">
+      <command_interface name="position"/>
+      <state_interface name="position"><param name="initial_value">-1.57</param></state_interface>
+      <state_interface name="velocity"/>
+    </joint>
+    <joint name="elbow_joint">
+      <command_interface name="position"/>
+      <state_interface name="position"><param name="initial_value">1.57</param></state_interface>
+      <state_interface name="velocity"/>
+    </joint>
+    <joint name="wrist_1_joint">
+      <command_interface name="position"/>
+      <state_interface name="position"><param name="initial_value">-1.57</param></state_interface>
+      <state_interface name="velocity"/>
+    </joint>
+    <joint name="wrist_2_joint">
+      <command_interface name="position"/>
+      <state_interface name="position"><param name="initial_value">-1.57</param></state_interface>
+      <state_interface name="velocity"/>
+    </joint>
+    <joint name="wrist_3_joint">
+      <command_interface name="position"/>
+      <state_interface name="position"><param name="initial_value">0.0</param></state_interface>
+      <state_interface name="velocity"/>
+    </joint>
+
+  </ros2_control>
+</robot>

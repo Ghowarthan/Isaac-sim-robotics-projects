@@ -1,0 +1,29 @@
+# Settings for ros2_control: the controller manager and its controllers
+
+controller_manager:
+  ros__parameters:
+    update_rate: 100          # Control loop rate in Hz (read states -> compute -> write commands)
+
+    # Register the controller we want available, and its type (plugin)
+    joint_trajectory_controller:
+      type: joint_trajectory_controller/JointTrajectoryController
+
+joint_trajectory_controller:
+  ros__parameters:
+    # The joints this controller drives (must match the URDF ros2_control block)
+    joints:
+      - shoulder_pan_joint
+      - shoulder_lift_joint
+      - elbow_joint
+      - wrist_1_joint
+      - wrist_2_joint
+      - wrist_3_joint
+
+    command_interfaces: [position]            # We send target angles
+    state_interfaces: [position, velocity]    # We read back angle and speed
+
+    # Relaxed goal checks: 0.0 disables them, so small physics jitter
+    # in Isaac Sim doesn't make a finished motion count as "failed"
+    constraints:
+      stopped_velocity_tolerance: 0.0
+      goal_time: 0.0

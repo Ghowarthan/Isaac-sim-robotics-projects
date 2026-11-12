@@ -1,0 +1,13 @@
+stations:
+- name: station_1
+  x: -23.82
+  y: 27.52
+- name: station_2
+  x: 2.5
+  y: 27.42
+- name: station_3
+  x: -23.76
+  y: -0.39
+- name: station_4
+  x: 2.99
+  y: -20.85

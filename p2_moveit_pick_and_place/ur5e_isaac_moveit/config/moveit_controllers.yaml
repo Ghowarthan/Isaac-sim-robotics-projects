@@ -1,0 +1,19 @@
+# Tells MoveIt which controller executes its plans, and how to reach it
+
+moveit_controller_manager: moveit_simple_controller_manager/MoveItSimpleControllerManager
+
+moveit_simple_controller_manager:
+  controller_names:
+    - joint_trajectory_controller           # Same name as in ros2_controllers.yaml
+
+  joint_trajectory_controller:
+    type: FollowJointTrajectory             # The kind of action MoveIt will call
+    action_ns: follow_joint_trajectory      # Action address: /joint_trajectory_controller/follow_joint_trajectory
+    default: true                           # Use this controller unless told otherwise
+    joints:
+      - shoulder_pan_joint
+      - shoulder_lift_joint
+      - elbow_joint
+      - wrist_1_joint
+      - wrist_2_joint
+      - wrist_3_joint

@@ -1,0 +1,133 @@
+#usda 1.0
+(
+    customLayerData = {
+        string creator = "URDF USD Converter v0.3.2"
+    }
+    defaultPrim = "ur5e"
+    endTimeCode = 1000000
+    kilogramsPerUnit = 1
+    metersPerUnit = 1
+    startTimeCode = 0
+    upAxis = "Z"
+)
+
+over "ur5e" (
+    prepend apiSchemas = ["IsaacRobotAPI"]
+)
+{
+    prepend rel isaac:physics:robotJoints = [
+        </ur5e/Physics/tn__base_linkbase_link_inertia_kc0>,
+        </ur5e/Physics/shoulder_pan_joint>,
+        </ur5e/Physics/shoulder_lift_joint>,
+        </ur5e/Physics/elbow_joint>,
+        </ur5e/Physics/wrist_1_joint>,
+        </ur5e/Physics/wrist_2_joint>,
+        </ur5e/Physics/wrist_3_joint>,
+    ]
+    prepend rel isaac:physics:robotLinks = [
+        </ur5e/Geometry/world/base_link/base_link_inertia>,
+        </ur5e/Geometry/world/base_link/base_link_inertia/shoulder_link>,
+        </ur5e/Geometry/world/base_link/base_link_inertia/shoulder_link/upper_arm_link>,
+        </ur5e/Geometry/world/base_link/base_link_inertia/shoulder_link/upper_arm_link/forearm_link>,
+        </ur5e/Geometry/world/base_link/base_link_inertia/shoulder_link/upper_arm_link/forearm_link/wrist_1_link>,
+        </ur5e/Geometry/world/base_link/base_link_inertia/shoulder_link/upper_arm_link/forearm_link/wrist_1_link/wrist_2_link>,
+        </ur5e/Geometry/world/base_link/base_link_inertia/shoulder_link/upper_arm_link/forearm_link/wrist_1_link/wrist_2_link/wrist_3_link>,
+    ]
+    token isaac:robotType = "Default"
+
+    over "Geometry"
+    {
+        over "world"
+        {
+            over "base_link"
+            {
+                over "base_link_inertia" (
+                    prepend apiSchemas = ["IsaacLinkAPI"]
+                )
+                {
+                    over "shoulder_link" (
+                        prepend apiSchemas = ["IsaacLinkAPI"]
+                    )
+                    {
+                        over "upper_arm_link" (
+                            prepend apiSchemas = ["IsaacLinkAPI"]
+                        )
+                        {
+                            over "forearm_link" (
+                                prepend apiSchemas = ["IsaacLinkAPI"]
+                            )
+                            {
+                                over "wrist_1_link" (
+                                    prepend apiSchemas = ["IsaacLinkAPI"]
+                                )
+                                {
+                                    over "wrist_2_link" (
+                                        prepend apiSchemas = ["IsaacLinkAPI"]
+                                    )
+                                    {
+                                        over "wrist_3_link" (
+                                            prepend apiSchemas = ["IsaacLinkAPI"]
+                                        )
+                                        {
+                                            over "ft_frame" (
+                                                prepend apiSchemas = ["IsaacSiteAPI"]
+                                            )
+                                            {
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    over "Physics"
+    {
+        over "tn__base_linkbase_link_inertia_kc0" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "shoulder_pan_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "shoulder_lift_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "elbow_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "wrist_1_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "wrist_2_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "wrist_3_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+    }
+}
+
